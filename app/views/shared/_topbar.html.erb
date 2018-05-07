@@ -1,0 +1,28 @@
+<div class="topbar">
+  <div class="inside">
+    <div class="logo-block"><%= link_to(image_tag( 'dna-logo-long.png', alt: 'Get DNA Tested Today logo', class: 'img-responsive logo'), root_path ) %></div>
+
+		<% if user_signed_in? %>
+			<div class="user-access-block">
+				<div class="uk-inline">
+				    <a class="uk-button" type="button">
+							<h4><%= "#{current_user.name}" %></h4>
+				    </a>
+
+				    <div uk-drop="mode: click" class="cst">
+				        <ul class="uk-card uk-card-body uk-card-default">
+				        	<!-- <li class="nav-li ft-only"><%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link' %></li>
+				        	<li class="nav-li ft-only"><%= link_to 'Log In', new_user_session_path, class: 'nav-link' %></li>
+				        	<li class="nav-li"><%= link_to "#{current_user.name}*", edit_user_registration_path, class: 'nav-link' %></li> -->
+				        	<li class="nav-li"><%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'nav-link' %></li>
+				        </ul>
+				    </div>
+				</div>
+			</div>
+		<% end %>
+  </div>
+</div>
+
+<!--
+
+ -->

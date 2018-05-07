@@ -1,0 +1,46 @@
+<% @page_title = @state.name.capitalize %>
+
+<div class="full pop">
+	<div class="one">
+	  <h1><span><%= @state.name %></span></h1>
+		<%= link_to("Back to States", states_path, :class => 'back-link') %>
+	</div>
+
+	<div class="location-map">
+
+		<% if @state_towns.count != 0 %>
+			<div class="map-hlf">
+				 <!-- render 'shared/map'  -->
+  		</div>
+
+  		<div class="town-hlf">
+  			<div class="search-sec">
+					<div class="searcher">
+						<!--  form_with(url: locations_path, class: "form-inline", local: true, method: :get) do |f|
+						  = f.text_field :near, class: "form-control", placeholder: "Search"
+						  = f.submit "", class: "btn btn-outline-secondary search"
+						 end  -->
+					</div>
+				</div>
+
+
+				<div class="loclist">
+					<table class="listing">
+						<% @state_towns.each do |town| %>
+							<tr>
+								<% if user_signed_in? && current_user.admin? %>
+								  <td><h4 class="state-name"><%= town.id %>.&nbsp; <%= link_to town.townname.capitalize, town_path(town) %></h4></td>
+						   <% else %>
+							   <td><h4 class="state-name"><%= link_to town.townname.capitalize, town_path(town) %></h4></td>
+						   <% end %>
+						  </tr>
+			  		<% end %>
+					</table>
+				</div>
+			</div>
+
+  		<% else %>
+			 	<p>Unfortunately, we have no testing locations in <%= @state.name %>, but you can still follow the link below, and order an At Home DNA Test Kit Today!</p>
+			<% end %>
+	</div>
+</div>

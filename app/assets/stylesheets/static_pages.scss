@@ -1,0 +1,49 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "mixins";
+@import "variables";
+
+.testing{
+
+	ul.testing-options{width: 85%; @include center-block();}
+	.uk-accordion-title {color: $dk-blue; font-size: 20px;}
+	.uk-accordion-content {width: 90%; border-bottom: 2px dotted rgba($gray, .1); padding-bottom: 15px;}
+	p.price{font-weight: bold; color: $blue;}
+
+}
+
+.states {
+	.newlist {@include sec-default(); background-color: $blue; margin-top:30px; padding: 0 10px 20px;
+
+		h2 {text-align: center; font-size: 20px; font-weight: bold;color:white; text-shadow: 0px 1px 1px rgba(black, .55);}
+		.states-dd {width: 30%; @include center-block();}
+		.dropdown {@include sec-default(); border: 1px solid darken($f4, 5%);border-radius: 5px;}
+		.btn-secondary.dropdown-toggle {@include sec-default(); font-size: 20px; padding: 10px 0;
+			i {margin-left: 10px; margin-top: 7px;}
+		}
+		.dropdown-menu {max-height: 350px; overflow-y:scroll; padding-top:15px;}
+		.dropdown-item {@include sec-default(); margin-bottom: 10px; padding:5px 10px;
+			font-size: 18px; line-height: 1.8em;
+			.state-icons{width: 30px; display: inline-block; float: left; margin-right: 10px; margin-left: 5%;}
+		}
+	}
+}
+
+
+
+// controller:
+// 	@loc_block = @locations.to_a[0..16]
+
+// index:
+
+// 	<div class="col-md-2">
+// 		<% for location in @loc_block %>
+// 			<p><%= location.state.name %><br>
+// 			<small><%= location.town.townname %></small>
+// 			</p>
+// 	 	<% end %>
+// 	</div>
+p.ttc {text-transform:lowercase;
+	span {text-transform: uppercase;}
+}

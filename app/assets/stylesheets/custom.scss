@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700|Montserrat:400,500,600');
+@import "mixins";
+@import "variables";
+
+body {
+	// margin-top:-9px;
+	p, h5, h4, h3, h2, h1, a, li {font-family: $monte; line-height: 1.4em; color: $dark;
+	  &.wide {letter-spacing: 1.5px;}
+	  &.upper {text-transform: uppercase;}
+	}
+	p{font-size: 16px;}
+}
+ul{list-style-type: none; padding-left:0;}
+a:hover {text-decoration: none; opacity: .7;}
+
+
+.full {@include sec-default();}
+.inside {@include sec-default();}
+.wrap-lg {width: 95%; @include center-block();}
+.wrap {width: 85%; @include center-block();}
+
+.text-center{text-align: center;}
+
+.topbar{
+	@include sec-default();margin-top:0;background-color: #e8f9fe;padding: 10px 50px 10px 20px;
+	position: relative;z-index: 4;
+
+	.logo-block{display: inline-block;float: left;width: 18%;}
+
+	.user-access-block {display: inline-block;float: right; width: 40%; text-align: right;}
+	.uk-button{padding:0;}
+	h4{margin-top: 20px; }
+	li{text-align: left; }
+
+	.uk-drop.cst{width: 195px; margin-top: 0px;
+		.uk-card-body{padding:15px;}
+	}
+}
+
+.side-bar{
+	position: absolute; z-index: 3;
+	width:20%; height:100%;
+
+	background-color: $f9; border-right: 1px solid rgba($gray, .15); padding: 10% 15px 20px 30px;
+
+	li {@include sec-default(); line-height: 2em; margin-bottom: 10px;
+		.sm-link{font-size: 18px; }
+	}
+}
+
+.page-body{
+	display:inline-block; width:80%; float: right; padding:30px;
+
+
+}

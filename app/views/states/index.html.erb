@@ -1,0 +1,33 @@
+<% @page_title = "State Testing Locations" %>
+
+<div class="full">
+	<div class="wrap">
+		<h1><%= @page_title %></h1>
+		<!-- <p>Get DNA Tested Today provides affordable DNA/Paternity Testing in over 2500 locations nationwide. Each of our locations are certified and accredited by the AABB and ISO 17025.</p> -->
+
+
+		<div class="newlist">
+			<h2>Choose a state from the list below to find a location near you.</h2>
+			<div class="states-dd">
+				<div class="dropdown">
+				  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				    Select a State <i class="fa fa-angle-down"></i>
+				  </button>
+
+				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<% for state in @states %>
+						 	<%= link_to state_path(state), class: 'dropdown-item' do %>
+								<%= state.id %>. <%= state.name %>
+						 	<% end %>
+					  <% end %>
+
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- state26 = State.create(name: "Nebraska", abv: "NE") -->
+<!-- .each do |state|  -->
+<!-- for state in @cols_one  -->

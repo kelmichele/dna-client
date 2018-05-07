@@ -1,0 +1,89 @@
+@mixin center-block() {
+  float:none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin sec-default() {
+  width: 100%;
+  float: left;
+  display: block;
+}
+
+@mixin before() {
+  content: "";
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height:100%;
+  z-index: -1;
+}
+
+@mixin sec-bgimage ($img) {
+  background-image: url(image_path($img));
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: 100%;
+}
+
+@mixin sec-grid($float, $size) {
+  display: inline-block;
+  width: $size;
+  float: $float;
+}
+
+@mixin bp($point) {
+  @if $point == su {
+    @media (min-width: 1440px) { @content ; }
+  }
+
+  @else if $point == dt {
+    @media (min-width: 1200px) { @content ; }
+  }
+
+  @else if $point == xl {
+    @media (min-width: 1025px) { @content ; }
+  }
+
+  @else if $point == tb {
+    @media (max-width: 1025px)  { @content ; }
+  }
+
+  @else if $point == nn {
+    @media (max-width: 992px)  { @content ; }
+  }
+
+  @else if $point == tn {
+    @media (max-width: 823px) { @content ; }
+  }
+
+  @else if $point == md {
+    @media (max-width: 768px)  { @content ; }
+  }
+
+  @else if $point == pl {
+    @media (max-width: 737px)  { @content ; }
+  }
+
+  @else if $point == mb {
+    @media (max-width: 670px)  { @content ; }
+  }
+
+  @else if $point == ph {
+    @media (max-width: 570px)  { @content ; }
+  }
+
+  @else if $point == sm {
+    @media (max-width: 420px)  { @content ; }
+  }
+
+  @else if $point == xs {
+    @media (max-width: 376px)  { @content ; }
+  }
+
+  @else if $point == xx {
+    @media (max-width: 320px)  { @content ; }
+  }
+}

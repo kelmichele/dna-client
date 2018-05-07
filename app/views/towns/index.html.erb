@@ -1,0 +1,14 @@
+<% @page_title = "Cities, Index" %>
+
+
+<div class="full">
+	<div class="wrap">
+		<h2>Import Locations</h2>
+		<%= form_tag import_towns_path, multipart: true do %>
+		  <%= file_field_tag :file %>
+		  <br>
+		  <%= submit_tag "Import" %>
+		<% end %>
+	</div>
+</div>
+
