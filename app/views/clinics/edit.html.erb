@@ -1,0 +1,10 @@
+<% @page_title = "Edit Clinic" %>
+
+<div class="full">
+	<div class="wrap">
+		<h1><%= @page_title %></h1>
+		<%= render 'form' %>
+    <%= link_to "Delete This Clinic", clinic_path(@clinic), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-primary btn-danger" %>
+		<%= link_to("Cancel", clinic_path(@clinic), :class => 'back-link inline') %>
+	</div>
+</div>

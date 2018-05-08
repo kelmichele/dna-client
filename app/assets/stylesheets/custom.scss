@@ -38,8 +38,8 @@ a:hover {text-decoration: none; opacity: .7;}
 }
 
 .side-bar{
-	position: absolute; z-index: 3;
-	width:20%; height:100%;
+	position: fixed; z-index: 3;
+	width:15%; height:100%;
 
 	background-color: $f9; border-right: 1px solid rgba($gray, .15); padding: 10% 15px 20px 30px;
 
@@ -49,7 +49,10 @@ a:hover {text-decoration: none; opacity: .7;}
 }
 
 .page-body{
-	display:inline-block; width:80%; float: right; padding:30px;
-
-
+	display:inline-block; width:85%; float: right; padding:30px;
 }
+
+.actions {
+	.action {border-radius: 10px; background-color: $dk-blue; padding: 5px 10px; color: white; font-weight: bold; font-size: 14px; text-shadow: 0px 1px 1px rgba(black,.5);}
+}
+#map {height:400px;}

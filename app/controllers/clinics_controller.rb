@@ -24,6 +24,7 @@ class ClinicsController < ApplicationController
 	    redirect_to clinics_path
 		else
 		  render 'new'
+		  flash[:danger] = "Some Clinics were not saved."
 		end
 	end
 
