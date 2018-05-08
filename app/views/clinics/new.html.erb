@@ -1,0 +1,22 @@
+<% @page_title = "Create a New Clinic" %>
+
+<div class="full">
+	<div class="wrap">
+		<h1><%= @page_title %></h1>
+		<hr><div class="clearfix"></div><br>
+
+		<div class="col-md-6 col-md-offset-6">
+			<h3>Import Locations</h3>
+			<%= form_tag import_clinics_path, multipart: true do %>
+			  <%= file_field_tag :file %>
+			  <br>
+			  <%= submit_tag "Import" %>
+			<% end %>
+		</div>
+		<div class="clearfix"></div><br>
+		<hr>
+
+
+		<%= render 'form' %>
+	</div>
+</div>

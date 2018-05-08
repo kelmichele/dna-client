@@ -1,0 +1,44 @@
+<% @page_title = "All Testing Clinics" %>
+
+
+<div class="full">
+	<div class="wrap">
+		<div class="col-md-6">
+			<h1><%= @page_title %></h1>
+		</div>
+
+		<div class="col-md-3 col-md-offset-3">
+			<%= link_to "Add New Clinics", new_clinic_path, class: "btn btn-default" %>
+		</div>
+		<div class="clearfix"></div><br>
+		<hr><hr>
+
+		<% @clinics.each do |clinic| %>
+			<div class="full">
+				<div class="col-md-1">
+					<p><%= clinic.id %>.</p>
+				</div>
+
+				<div class="col-md-4">
+					<%= simple_format(clinic.full_address.titleize) %>
+					<% if clinic.longitude && clinic.latitude %>lng: <%= clinic.longitude %>, lat: <%= clinic.latitude %> <% end %>
+				</div>
+
+				<div class="col-md-3">
+					<p>Phone:<br>
+						<%= clinic.phone %>
+						<% if clinic.ext %><br>Ext: <%= clinic.ext %> <% end %>
+					</p>
+					<p>Fax:<br> <%= clinic.fax %></p>
+				</div>
+
+				<div class="col-md-3">
+					<p><%= clinic.lab %></p>
+					<% if clinic.detail %><p><%= clinic.detail %> </p><% end %>
+				</div>
+
+			</div>
+			<div class="clearfix"></div><br><hr><br>
+		<% end %>
+	</div>
+</div>

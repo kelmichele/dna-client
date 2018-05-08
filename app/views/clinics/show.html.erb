@@ -1,0 +1,20 @@
+<% @page_title = 'Clinic' %>
+
+<div class="full">
+	<div class="wrap">
+	  <h1>Clinic</h1>
+	  <hr class="title-line">
+		<div class="clearfix"></div>
+		<%= link_to "Delete This clinic", clinic_path(@clinic), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-danger" %>
+		<%= link_to("Add New clinic", new_clinic_path, :class => 'action new btn-add inline') %>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+
+
+
+
+
+
+

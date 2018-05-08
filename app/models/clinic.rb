@@ -1,0 +1,35 @@
+class Clinic < ApplicationRecord
+  validates :lab, presence: true
+  validates :addr1, presence: true, uniqueness: { scope: :city, case_sensitive: false }
+  validates :city, presence: true
+  validates :state, presence: true
+  validates :zip, presence: true
+  validates :phone, presence: true
+
+  def street_addr
+    [addr1, addr2].compact.join(" , ")
+  end
+
+  def city_state
+    "#{city}, #{state}"
+  end
+
+  def address
+    [street_addr, city_state, zip].compact.join(" , ")
+  end
+
+  def full_address
+    "#{street_addr}" + "\n" + "#{city_state} #{zip}" + "\n"
+  end
+
+ 	def self.import(file)
+    spreadsheet = Roo::Spreadsheet.open(file.path)
+    header = spreadsheet.row(1)
+    (2..spreadsheet.last_row).each do |i|
+      row = Hash[[header, spreadsheet.row(i)].transpose]
+      clinic = find_by(addr1: row["addr1"]) || new
+      clinic.attributes = row.to_hash
+      clinic.save!
+    end
+  end
+end
