@@ -14,7 +14,7 @@ class ClinicsController < ApplicationController
 	  else
 	    Clinic.all
 		end
-		# @clinics = @clinics.paginate(:page => params[:page], :per_page => 5)
+		@clinics = @clinics.paginate(:page => params[:page], :per_page => 5)
 	end
 
 	def import

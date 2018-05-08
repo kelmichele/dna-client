@@ -9,7 +9,8 @@ class Clinic < ApplicationRecord
   validates :zip, presence: true
   validates :phone, presence: true
 
-  default_scope -> { order(id: :asc)}
+  default_scope -> { order(state: :asc)}
+  # default_scope -> { order(id: :asc)}
 
   def street_addr
     [addr1, addr2].compact.join(" , ")
