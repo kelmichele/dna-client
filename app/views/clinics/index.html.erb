@@ -8,10 +8,16 @@
 		</div>
 
 		<div class="col-md-3 col-md-offset-3">
+			<br><br>
 			<%= link_to "Add New Clinics", new_clinic_path, class: "btn btn-default" %>
 		</div>
 		<div class="clearfix"></div><br>
-		<hr><hr>
+		<hr>
+			<%= form_with(url: clinics_path, class: "form-inline", local: true, method: :get) do |f| %>
+			  <%= f.text_field :near, class: "form-control", placeholder: "Search" %>
+			  <%= f.submit "Search", class: "btn btn-default search" %>
+			<% end %>
+		<hr>
 
 		<div class="col-md-6">
 			<% @clinics.each do |clinic| %>
@@ -42,14 +48,14 @@
 
 	  			<div class="clearfix"></div>
 					<div class="actions"><small><%= link_to("Edit Info", edit_clinic_path(clinic), class: 'action edit') %></small></div>
-
 				</div>
 				<div class="clearfix"></div><br><hr><br>
 			<% end %>
+			<!-- < will_paginate @clinics >  -->
 		</div>
 
 		<div class="col-md-6">
-			<%= tag.div nil, id: 'map', data: { clinics: @clinics.to_json(methods: [:address]), l: params[:state] } %>
+			<%= tag.div nil, id: 'map', data: { clinics: @clinics.to_json(methods: [:address]), l: params[:l] } %>
 			<%= link_to "Redo search in this area", "#", id: "redo-search" %>
 
 		</div>

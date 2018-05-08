@@ -2,7 +2,19 @@ class ClinicsController < ApplicationController
 	before_action :set_clinic, only: [:edit, :show, :update, :destroy]
 
 	def index
-		@clinics = Clinic.all
+		# @clinics = Clinic.all
+		@clinics = if params[:l]
+	    sw_lat, sw_lng, ne_lat, ne_lng = params[:l].split(",")
+	    center   = Geocoder::Calculations.geographic_center([[sw_lat, sw_lng], [ne_lat, ne_lng]])
+	    distance = Geocoder::Calculations.distance_between(center, [sw_lat, sw_lng])
+	    box      = Geocoder::Calculations.bounding_box(center, distance)
+	    Clinic.within_bounding_box(box)
+	  elsif params[:near]
+	    Clinic.near(params[:near])
+	  else
+	    Clinic.all
+		end
+		# @clinics = @clinics.paginate(:page => params[:page], :per_page => 5)
 	end
 
 	def import
