@@ -2,7 +2,6 @@ class ClinicsController < ApplicationController
 	before_action :set_clinic, only: [:edit, :show, :update, :destroy]
 
 	def index
-		# @clinics = Clinic.all
 		@clinics = if params[:l]
 	    sw_lat, sw_lng, ne_lat, ne_lng = params[:l].split(",")
 	    center   = Geocoder::Calculations.geographic_center([[sw_lat, sw_lng], [ne_lat, ne_lng]])
@@ -15,6 +14,12 @@ class ClinicsController < ApplicationController
 	    Clinic.all
 		end
 		@clinics = @clinics.paginate(:page => params[:page], :per_page => 10)
+
+		# @clinics = Clinic.order(:state)
+		respond_to do |format|
+		  format.html
+		  format.csv { send_data @clinics.to_csv }
+		end
 	end
 
 	def import

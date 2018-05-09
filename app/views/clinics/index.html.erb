@@ -19,47 +19,77 @@
 			<% end %>
 		<hr>
 
-		<div class="col-md-6">
-			<% @clinics.each do |clinic| %>
-				<div class="full">
-					<div class="col-md-1">
-						<p><%= clinic.id %>.</p>
-					</div>
-
-					<div class="col-md-4">
-						<%= simple_format(clinic.full_address.titleize) %>
-						<% if clinic.longitude && clinic.latitude %>
-							<p>[ <%= clinic.latitude %>, <%= clinic.longitude %> ]</p>
-						<% end %>
-					</div>
-
-					<div class="col-md-3">
-						<p>Phone:<br>
-							<%= clinic.phone %>
-							<% if clinic.ext %><br>Ext: <%= clinic.ext %> <% end %>
-						</p>
-						<p>Fax:<br> <%= clinic.fax %></p>
-					</div>
-
-					<div class="col-md-3">
-						<p><%= clinic.lab %></p>
-						<% if clinic.detail %><p><%= clinic.detail %> </p><% end %>
-					</div>
-
-	  			<div class="clearfix"></div>
-					<div class="actions"><small><%= link_to("Edit Info", edit_clinic_path(clinic), class: 'action edit') %></small></div>
-				</div>
-				<div class="clearfix"></div><br><hr><br>
-			<% end %>
-			<%= will_paginate @clinics, remote: true %>
-		</div>
-
-		<div class="col-md-6">
+		<div class="map-box">
 			<%= tag.div nil, id: 'map', data: { clinics: @clinics.to_json(methods: [:address]), l: params[:l] } %>
 			<%= link_to "Redo search in this area", "#", id: "redo-search" %>
-
 		</div>
 
+		<div class="clinics-list">
+			<table class="clinics-table">
+				<tbody>
+					<% @clinics.each do |clinic| %>
+					<tr>
+						<td class="id">
+							<p><%= clinic.id %>.</p>
+						</td>
+
+						<td class="st-addr">
+							<%= simple_format(clinic.full_address.titleize) %>
+							<% if clinic.longitude && clinic.latitude %>
+								<p>[ <%= clinic.latitude %>, <%= clinic.longitude %> ]</p>
+							<% end %>
+						</td>
+
+						<td class="number">
+							<p><small>Phone:</small><br><%= clinic.phone %>
+							<% if clinic.ext %><br>Ext: <%= clinic.ext %> <% end %>
+							</p>
+						</td>
+
+						<td class="fax">
+							<p><small>Fax:</small><br> <%= clinic.fax %></p>
+						</td>
+
+						<td class="lab">
+							<p><%= clinic.lab %></p>
+							<% if clinic.detail %><p><%= clinic.detail %> </p><% end %>
+						</td>
+
+						<td class="btns">
+							<div class="actions">
+								<%= link_to("View", clinic_path(clinic), class: 'action show') %>
+								<%= link_to("Edit", edit_clinic_path(clinic), class: 'action edit') %>
+							</div>
+						</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+			<%= will_paginate @clinics, remote: true %>
+		</div>
 	</div>
 </div>
 
+
+<!--
+	IF YOU WANT TO DOWNLOAD CSV
+<table class="clinics-table">
+	<tbody>
+		<% @clinics.each do |clinic| %>
+		<tr>
+			<td><%= clinic.lab %></td>
+			<td><%= clinic.detail %> </td>
+			<td><%= clinic.addr1 %></td>
+			<td><%= clinic.addr2 %></td>
+			<td><%= clinic.city %></td>
+			<td><%= clinic.state %></td>
+			<td><%= clinic.zip %></td>
+			<td><%= clinic.phone %></td>
+			<td><%= clinic.ext %></td>
+			<td><%= clinic.fax %></td>
+			<td><%= clinic.latitude %></td>
+			<td><%= clinic.longitude %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table> -->

@@ -6,6 +6,11 @@
 			<li><%= link_to 'Locations', states_path, class: 'sm-link' %></li>
 			<li><%= link_to 'Clinics', clinics_path, class: 'sm-link' %></li>
 			<li><%= link_to "FAQ's", faq_path, class: 'sm-link' %></li>
+			<div class="clearfix"></div>
+			<br><br><hr><br>
+			<!-- <p><small><b>Download:</small></b> -->
+			<li><%= link_to "Download", clinics_path(format: "csv"), class: 'btn btn-default' %> </li>
+		  <!-- <li><%= link_to "Excel", clinics_path(format: "xls") %></li> -->
 		</ul>
   </nav>
 </div>

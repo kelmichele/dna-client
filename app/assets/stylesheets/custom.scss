@@ -53,6 +53,10 @@ a:hover {text-decoration: none; opacity: .7;}
 }
 
 .actions {
-	.action {border-radius: 10px; background-color: $dk-blue; padding: 5px 10px; color: white; font-weight: bold; font-size: 14px; text-shadow: 0px 1px 1px rgba(black,.5);}
+	.action {border-radius: 10px; padding: 5px 10px; width: auto; color: white; font-weight: bold; font-size: 14px; text-shadow: 0px 1px 1px rgba(black,.5);
+		&.edit {background-color: $dk-blue; }
+		&.show {background-color: $blue; margin-bottom: 10px; width:55px;}
+	}
 }
 #map {height:400px;}
+

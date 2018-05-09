@@ -4,13 +4,15 @@
 @import "mixins";
 @import "variables";
 
-.testing{
+p.ttc {text-transform:lowercase;
+	span {text-transform: uppercase;}
+}
 
+.testing{
 	ul.testing-options{width: 85%; @include center-block();}
 	.uk-accordion-title {color: $dk-blue; font-size: 20px;}
 	.uk-accordion-content {width: 90%; border-bottom: 2px dotted rgba($gray, .1); padding-bottom: 15px;}
 	p.price{font-weight: bold; color: $blue;}
-
 }
 
 .states {
@@ -30,20 +32,20 @@
 	}
 }
 
+.clinics {
+	.map-box, .clinics-list {width: 90%; @include center-block();}
 
+	.clinics-list {margin-top:30px;}
 
-// controller:
-// 	@loc_block = @locations.to_a[0..16]
-
-// index:
-
-// 	<div class="col-md-2">
-// 		<% for location in @loc_block %>
-// 			<p><%= location.state.name %><br>
-// 			<small><%= location.town.townname %></small>
-// 			</p>
-// 	 	<% end %>
-// 	</div>
-p.ttc {text-transform:lowercase;
-	span {text-transform: uppercase;}
+	.clinics-table {@include sec-default();
+		tr{@include sec-default(); margin-bottom: 20px;}
+		// td {padding: 5px 14px;}
+		td {display: inline-block; float: left; width: 20%;
+			&.id, &.btns {width: 5%;}
+			&.st-addr {width: 30%;}
+			&.number{padding-left: 15px;}
+		}
+	}
 }
+
+

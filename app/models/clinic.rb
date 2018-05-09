@@ -42,6 +42,16 @@ class Clinic < ApplicationRecord
       clinic.save!
     end
   end
+
+
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << column_names
+      all.each do |clinic|
+        csv << clinic.attributes.values
+      end
+    end
+  end
 end
 
 # rake geocode:all CLASS=Clinic SLEEP=0.25 BATCH=100
