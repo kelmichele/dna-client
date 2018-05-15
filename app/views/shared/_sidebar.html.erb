@@ -9,7 +9,7 @@
 			<div class="clearfix"></div>
 			<br><br><hr><br>
 			<!-- <p><small><b>Download:</small></b> -->
-		  <% if current_user.admin? %>
+		  <% if current_user.try(:admin?) %>
 			<li><%= link_to "Download", clinics_path(format: "csv"), class: 'btn btn-default' %> </li>
 			<% end %>
 		  <!-- <li><%= link_to "Excel", clinics_path(format: "xls") %></li> -->

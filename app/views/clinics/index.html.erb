@@ -38,7 +38,7 @@
 						<td class="st-addr">
 							<%= simple_format(clinic.full_address.titleize) %>
 							<% if clinic.longitude && clinic.latitude %>
-								<p>[ <%= clinic.latitude %>, <%= clinic.longitude %> ]</p>
+								<p>[ <%= clinic.latitude %>,<%= clinic.longitude %> ]</p>
 							<% end %>
 						</td>
 
