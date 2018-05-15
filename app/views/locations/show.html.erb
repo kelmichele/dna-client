@@ -1,0 +1,20 @@
+<% @page_title = 'Location' %>
+
+<div class="full">
+	<div class="wrap">
+	  <h1>Location</h1>
+	  <hr class="title-line">
+		<div class="clearfix"></div>
+		<%= link_to "Delete This location", location_path(@location), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-danger" %>
+		<%= link_to("Add New location", new_location_path, :class => 'action new btn-add inline') %>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+
+
+
+
+
+
+

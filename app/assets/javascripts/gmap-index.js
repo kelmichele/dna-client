@@ -6,17 +6,17 @@ document.addEventListener("turbolinks:load", function() {
   });
   window.map = map;
 
-  var clinics = JSON.parse(document.querySelector("#map").dataset.clinics);
-  window.clinics = clinics;
+  var locations = JSON.parse(document.querySelector("#map").dataset.locations);
+  window.locations = locations;
 
-  clinics.forEach(function(clinic) {
-    if (clinic.latitude && clinic.longitude) {
+  locations.forEach(function(location) {
+    if (location.latitude && location.longitude) {
       var marker = map.addMarker({
-        lat: clinic.latitude,
-        lng: clinic.longitude,
-        title: clinic.address,
+        lat: location.latitude,
+        lng: location.longitude,
+        title: location.address,
         infoWindow: {
-          content: '<p><a href="/clinics/' + clinic.id + '" >' + clinic.address + '</a></p>'
+          content: '<p><a href="/locations/' + location.id + '" >' + location.address + '</a></p>'
         }
       });
     }
@@ -39,7 +39,7 @@ document.addEventListener("turbolinks:load", function() {
     var bounds = map.getBounds();
     var position = bounds.getSouthWest().toUrlValue() + "," + bounds.getNorthEast().toUrlValue();
 
-    Turbolinks.visit('/clinics?l=' + position);
+    Turbolinks.visit('/locations?l=' + position);
   });
 
 });

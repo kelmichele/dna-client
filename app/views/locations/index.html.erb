@@ -1,0 +1,73 @@
+<% @page_title = "All Testing Locations" %>
+
+<!-- rake geocode:all CLASS=Location SLEEP=0.25 BATCH=50 -->
+<div class="full">
+	<div class="wrap-lg">
+		<div class="col-md-6">
+			<h1><%= @page_title %></h1>
+		</div>
+
+		<div class="col-md-3 col-md-offset-3">
+			<br><br>
+		  <% if current_user.admin? %>
+			<%= link_to "Add New Locations", new_location_path, class: "btn btn-default" %>
+			<% end %>
+		</div>
+		<div class="clearfix"></div><br>
+		<hr>
+			<%= form_with(url: locations_path, class: "form-inline", local: true, method: :get) do |f| %>
+			  <%= f.text_field :near, class: "form-control", placeholder: "Search" %>
+			  <%= f.submit "Search", class: "btn btn-default search" %>
+			<% end %>
+		<hr>
+
+		<div class="map-box">
+			<%= tag.div nil, id: 'map', data: { locations: @locations.to_json(methods: [:address]), l: params[:l] } %>
+			<%= link_to "Redo search in this area", "#", id: "redo-search" %>
+		</div>
+
+		<div class="locations-list">
+			<table class="locations-table">
+				<tbody>
+					<% @locations.each do |location| %>
+					<tr>
+						<td class="id">
+							<p><%= location.id %>.</p>
+						</td>
+
+						<td class="st-addr">
+							<%= simple_format(location.full_address.titleize) %>
+							<!--  if location.longitude && location.latitude
+								<p>[ <%= location.latitude %>,<%= location.longitude %> ]</p>
+							end  -->
+						</td>
+
+						<td class="number">
+							<p><small>Phone:</small><br><%= location.phone %>
+							<% if location.ext %><br>Ext: <%= location.ext %> <% end %>
+							</p>
+						</td>
+
+						<td class="fax">
+							<p><small>Fax:</small><br> <%= location.fax %></p>
+						</td>
+
+						<td class="lab">
+							<p><%= location.lab %></p>
+							<% if location.detail %><p><%= location.detail %> </p><% end %>
+						</td>
+
+						<td class="btns">
+							<div class="actions">
+								<%= link_to("View", location_path(location), class: 'action show') %>
+							  <% if current_user.admin? %><%= link_to("Edit", edit_location_path(location), class: 'action edit') %><% end %>
+							</div>
+						</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+			<%= will_paginate @locations, remote: true %>
+		</div>
+	</div>
+</div>

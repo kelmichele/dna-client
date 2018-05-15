@@ -1,0 +1,10 @@
+<% @page_title = "Edit Location" %>
+
+<div class="full">
+	<div class="wrap">
+		<h1><%= @page_title %></h1>
+		<%= render 'form' %>
+    <%= link_to "Delete This Location", location_path(@location), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-primary btn-danger" %>
+		<%= link_to("Cancel", location_path(@location), :class => 'back-link inline') %>
+	</div>
+</div>

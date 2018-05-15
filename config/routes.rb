@@ -26,4 +26,10 @@ Rails.application.routes.draw do
       post :import
     end
   end
+
+  resources :locations do
+    collection do
+      post :import
+    end
+  end
 end

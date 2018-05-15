@@ -3,14 +3,15 @@
 		<ul class="side-menu">
 			<li><%= link_to 'Home', root_path, class: 'sm-link' %></li>
 			<li><%= link_to 'Testing', testing_path, class: 'sm-link' %></li>
-			<li><%= link_to 'Locations', states_path, class: 'sm-link' %></li>
+			<li><%= link_to 'States', states_path, class: 'sm-link' %></li>
 			<li><%= link_to 'Clinics', clinics_path, class: 'sm-link' %></li>
+			<li><%= link_to 'Locations', locations_path, class: 'sm-link' %></li>
 			<li><%= link_to "FAQ's", faq_path, class: 'sm-link' %></li>
 			<div class="clearfix"></div>
 			<br><br><hr><br>
 			<!-- <p><small><b>Download:</small></b> -->
 		  <% if current_user.try(:admin?) %>
-			<li><%= link_to "Download", clinics_path(format: "csv"), class: 'btn btn-default' %> </li>
+				<li><%= link_to "Download", clinics_path(format: "csv"), class: 'btn btn-default' %> </li>
 			<% end %>
 		  <!-- <li><%= link_to "Excel", clinics_path(format: "xls") %></li> -->
 		</ul>

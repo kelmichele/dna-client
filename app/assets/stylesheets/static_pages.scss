@@ -32,12 +32,12 @@ p.ttc {text-transform:lowercase;
 	}
 }
 
-.clinics {
-	.map-box, .clinics-list {width: 90%; @include center-block();}
+.clinics, .locations {
+	.map-box, .clinics-list, .locations-list {width: 90%; @include center-block();}
 
-	.clinics-list {margin-top:30px;}
+	.clinics-list, .locations-list {margin-top:30px;}
 
-	.clinics-table {@include sec-default();
+	.clinics-table, .locations-table {@include sec-default();
 		tr{@include sec-default(); margin-bottom: 20px;}
 		// td {padding: 5px 14px;}
 		td {display: inline-block; float: left; width: 20%;

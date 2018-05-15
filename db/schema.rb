@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_08_133005) do
+ActiveRecord::Schema.define(version: 2018_05_15_144500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,28 @@ ActiveRecord::Schema.define(version: 2018_05_08_133005) do
     t.index ["lab"], name: "index_clinics_on_lab"
     t.index ["state"], name: "index_clinics_on_state"
     t.index ["zip"], name: "index_clinics_on_zip"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "lab"
+    t.string "detail"
+    t.string "addr1"
+    t.string "addr2"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.string "phone"
+    t.string "ext"
+    t.string "fax"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["addr1"], name: "index_locations_on_addr1"
+    t.index ["city"], name: "index_locations_on_city"
+    t.index ["lab"], name: "index_locations_on_lab"
+    t.index ["state"], name: "index_locations_on_state"
+    t.index ["zip"], name: "index_locations_on_zip"
   end
 
   create_table "states", force: :cascade do |t|
