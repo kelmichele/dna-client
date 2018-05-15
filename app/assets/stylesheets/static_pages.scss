@@ -34,13 +34,17 @@ p.ttc {text-transform:lowercase;
 
 .clinics, .locations {
 	.map-box, .clinics-list, .locations-list {width: 90%; @include center-block();}
+	#map {margin-bottom:10px;}
 
 	.clinics-list, .locations-list {margin-top:30px;}
+	.pag-box {@include sec-default(); text-align: center;}
 
 	.clinics-table, .locations-table {@include sec-default();
-		tr{@include sec-default(); margin-bottom: 20px;}
+		tr{@include sec-default(); margin-bottom: 20px; }
+		tr.toprow{border-bottom: 1px solid #dfdfdf;}
 		// td {padding: 5px 14px;}
-		td {display: inline-block; float: left; width: 20%;
+		td {display: inline-block; float: left;
+			width: 20%;
 			&.id, &.btns {width: 5%;}
 			&.st-addr {width: 30%;}
 			&.number{padding-left: 15px;}

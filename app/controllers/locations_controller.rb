@@ -13,13 +13,16 @@ class LocationsController < ApplicationController
 	  else
 	    Location.all
 		end
-		@locations = @locations.paginate(:page => params[:page], :per_page => 10)
+		@locations = @locations.paginate(:page => params[:page], :per_page => 15)
 
-		# @locations = Location.order(:state)
 		respond_to do |format|
 		  format.html
 		  format.csv { send_data @locations.to_csv }
 		end
+
+		# @states = Location.distinct.pluck(:state)
+		@states = Location.pluck(:state)
+		@all_states = Location.distinct.select(:state).map { |s| s.state }
 	end
 
 	def import

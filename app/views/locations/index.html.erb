@@ -23,12 +23,37 @@
 
 		<div class="map-box">
 			<%= tag.div nil, id: 'map', data: { locations: @locations.to_json(methods: [:address]), l: params[:l] } %>
-			<%= link_to "Redo search in this area", "#", id: "redo-search" %>
+			<%= link_to "[ Redo search in this area ]", "#", id: "redo-search" %>
 		</div>
 
 		<div class="locations-list">
 			<table class="locations-table">
 				<tbody>
+					<div class="pag-box"><%= will_paginate @locations, remote: true %></div>
+					<div class="clearfix"></div>
+
+					<tr class="toprow">
+						<td class="id">
+							<p>ID</p>
+						</td>
+
+						<td class="st-addr">
+							<p>Address</p>
+						</td>
+
+						<td class="number">
+							<p>Phone</p>
+						</td>
+
+						<td class="fax">
+							<p>Fax</p>
+						</td>
+
+						<td class="lab">
+							<p>Lab/Details</p>
+						</td>
+					</tr>
+
 					<% @locations.each do |location| %>
 					<tr>
 						<td class="id">
@@ -36,20 +61,22 @@
 						</td>
 
 						<td class="st-addr">
-							<%= simple_format(location.full_address.titleize) %>
-							<!--  if location.longitude && location.latitude
-								<p>[ <%= location.latitude %>,<%= location.longitude %> ]</p>
-							end  -->
+							<p><%= location.addr1.titleize %><br>
+							<% if location.addr2 %><%= location.addr2.titleize %><br><% end %>
+							<%= location.city.titleize %>, <%= location.state.upcase %> <%= location.zip %>
+						</p>
 						</td>
 
 						<td class="number">
-							<p><small>Phone:</small><br><%= location.phone %>
+							<p>
+								<%= number_to_phone(location.phone, delimiter: '.', area_code: true) %>
 							<% if location.ext %><br>Ext: <%= location.ext %> <% end %>
 							</p>
 						</td>
 
 						<td class="fax">
-							<p><small>Fax:</small><br> <%= location.fax %></p>
+							<p>
+								<%= number_to_phone(location.fax, delimiter: '.', area_code: true) %></p>
 						</td>
 
 						<td class="lab">
@@ -67,7 +94,7 @@
 					<% end %>
 				</tbody>
 			</table>
-			<%= will_paginate @locations, remote: true %>
+			<div class="pag-box"><%= will_paginate @locations, remote: true %></div>
 		</div>
 	</div>
 </div>
