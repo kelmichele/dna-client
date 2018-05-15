@@ -21,8 +21,8 @@ class LocationsController < ApplicationController
 		end
 
 		# @states = Location.distinct.pluck(:state)
-		@states = Location.pluck(:state)
-		@all_states = Location.distinct.select(:state).map { |s| s.state }
+		# @states = Location.pluck(:state)
+		# @all_states = Location.distinct.select(:state).map { |s| s.state }
 	end
 
 	def import
