@@ -7,6 +7,7 @@
 				<h1><%= @page_title %></h1>
 			</div>
 
+			<% if current_user.email = "kelli@hsdesignhouse.com"%>
 			<div class="btns-right">
 				<div class="import-box">
 					<h4>Import Multiple Locations</h4>
@@ -18,6 +19,7 @@
 					<% end %>
 				</div>
 			</div>
+			<% end %>
 		</div>
 		<div class="clearfix"></div><hr>
 

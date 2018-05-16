@@ -9,11 +9,11 @@
 			<li><%= link_to "FAQ's", faq_path, class: 'sm-link' %></li>
 			<div class="clearfix"></div>
 			<br><br><hr><br>
-			<!-- <p><small><b>Download:</small></b>
+			<p><small><b>Download:</small></b>
 		  <% if current_user.try(:admin?) %>
-				<li><%= link_to "Download Locations", clinics_path(format: "csv"), class: 'btn btn-default' %> </li>
+				<li><%= link_to "Download CSV", clinics_path(format: "csv"), class: 'btn btn-default' %> </li>
 			<% end %>
-		   <li><%= link_to "Excel", clinics_path(format: "xls") %></li> -->
+		   <!-- <li><%= link_to "Excel", clinics_path(format: "xls") %></li> -->
 		</ul>
   </nav>
 </div>
