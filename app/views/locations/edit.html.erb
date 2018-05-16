@@ -2,9 +2,28 @@
 
 <div class="full">
 	<div class="wrap">
-		<h1><%= @page_title %></h1>
-		<%= render 'form' %>
-    <%= link_to "Delete This Location", location_path(@location), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-primary btn-danger" %>
-		<%= link_to("Cancel", location_path(@location), :class => 'back-link inline') %>
+
+		<div class="form-pagetop">
+			<div class="title-left">
+				<h1><%= @page_title %></h1>
+			</div>
+
+			<div class="btns-right">
+				<div class="import-box">
+					<h4>Import Multiple Locations</h4>
+					<hr class="hlf">
+					<%= form_tag import_locations_path, multipart: true do %>
+					  <%= file_field_tag :file %>
+					  <br>
+					  <%= submit_tag "Import", class: 'submit' %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix"></div><hr>
+
+		<div class="form-sec">
+			<%= render 'form' %>
+		</div>
 	</div>
 </div>

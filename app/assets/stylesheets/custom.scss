@@ -60,3 +60,16 @@ a:hover {text-decoration: none; opacity: .7;}
 }
 #map {height:400px;}
 
+@include bp(tb) {
+	.side-bar{
+		width:12%;
+		padding: 10% 10px 20px 15px;
+
+		li .sm-link{font-size: 16px; }
+	}
+}
+
+@include bp(tn) {
+	// this is where we go relative
+	.side-bar{position: relative; @include sec-default(); height:auto; padding: 15px;}
+}

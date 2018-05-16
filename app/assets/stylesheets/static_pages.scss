@@ -33,6 +33,23 @@ p.ttc {text-transform:lowercase;
 }
 
 .clinics, .locations {
+	.title-left, .btns-right {display: inline-block; float: left; width: 60%; }
+	h1 {padding-left:15px;}
+	.btns-right {width: 25%; float: right; margin-top: 30px; padding-right: 15px;
+		.btn-default {float: right; background-color: $f4;
+			&:hover {opacity: .7;}
+		}
+	}
+
+	.all-search {
+		hr.search-border.top{margin-top: 10px; margin-bottom: 25px;}
+		hr.search-border.btm{ margin: 25px 0;}
+		input.form-control {width: 20%;}
+		input.btn.search {background-color: $dk-blue; color: white; letter-spacing: 1px; font-weight: bold;
+			&:hover {opacity: .7;}
+		}
+	}
+
 	.map-box, .clinics-list, .locations-list {width: 90%; @include center-block();}
 	#map {margin-bottom:10px;}
 
@@ -40,16 +57,63 @@ p.ttc {text-transform:lowercase;
 	.pag-box {@include sec-default(); text-align: center;}
 
 	.clinics-table, .locations-table {@include sec-default();
-		tr{@include sec-default(); margin-bottom: 20px; }
-		tr.toprow{border-bottom: 1px solid #dfdfdf;}
-		// td {padding: 5px 14px;}
+		tbody{@include sec-default();}
+		tr.results{@include sec-default(); border-bottom: 1px solid #f2f2f2; padding:20px 0 15px;
+			&:hover {background-color: $f9}
+		}
+		tr.toprow{@include sec-default();border-bottom: 1px solid #dfdfdf;}
 		td {display: inline-block; float: left;
-			width: 20%;
-			&.id, &.btns {width: 5%;}
+			width: 21%; padding-left:10px;
+			&.id {width: 5%;}
+			&.btns {width: 6%;}
 			&.st-addr {width: 30%;}
-			&.number{padding-left: 15px;}
+		}
+		p {line-height: 1.6em;
+			span.ext {font-size: 15px; color: $dk-blue; font-weight: bold;}
+			span.dets {font-size: 15px; color: red; font-weight: bold;}
 		}
 	}
 }
+
+.locations.new, .locations.edit {
+	h1{font-size: 30px;}
+	// .form-pagetop{@include sec-default(); border-bottom: 1px solid #dfdfdf;}
+	.title-left { width: 60%; }
+	.btns-right {width: 35%; margin-top: 0px;}
+	.import-box {@include sec-default(); float: right; background-color: $f9; padding: 15px 20px; text-align: center;
+		h4 {margin-top: 0;}
+		hr.hlf {width: 30%; @include center-block(); margin-top: 10px;}
+		#file {@include center-block();}
+		input.submit {background-color: $dk-blue; color: white; padding:5px 20px; border-radius: 5px;
+			&:hover {opacity: .7;}
+		}
+	}
+
+	.form-sec {@include sec-default();font-family: $monte;
+		.form-group{width: 90%; @include center-block();}
+
+		.forminfo{margin-bottom: 20px;
+			&.inline {display: inline-block; float: left; width: 30%; margin-left: 2%; }
+			&.inline.hlf {width: 45%;}
+			&.inline.uno{margin-left: 0;}
+		}
+
+		.form-control{height:40px;}
+		.add-update{margin-bottom: 8px;}
+		.back-link {font-weight: bold; color: red; margin-left: 5%;}
+		.btn-danger {float: right;}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
 
 

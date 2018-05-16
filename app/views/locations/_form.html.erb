@@ -3,70 +3,76 @@
   <%= form_for(@location, :html => {class: "form-horizontal", role: "form" }) do |f| %>
     <div class="form-group">
       <div class="forminfo">
-        <%= f.label :lab %><br>
-        <%= f.text_field :lab, class: "form-control", placeholder: "Enter Address", autofocus: true %>
+        *<%= f.label :location_lab %>:<br>
+        <%= f.text_field :lab, class: "form-control", placeholder: "Lab Corp", autofocus: true %>
       </div>
 
       <div class="forminfo">
-        <%= f.label :detail %><br>
-        <%= f.text_field :detail, class: "form-control", placeholder: "Enter Address", autofocus: true %>
+        <%= f.label :Location_notes %>:<br>
+        <%= f.text_field :detail, class: "form-control", placeholder: "*Must have appointment", autofocus: true %>
       </div>
 
-      <div class="forminfo">
-        <%= f.label :addr1 %><br>
-        <%= f.text_field :addr1, class: "form-control", placeholder: "Enter Address", autofocus: true %>
+      <div class="forminfo inline hlf uno">
+        *<%= f.label :street_address %>:<br>
+        <%= f.text_field :addr1, class: "form-control", placeholder: "123 Main St", autofocus: true %>
       </div>
 
-      <div class="forminfo">
-        <%= f.label :addr2 %><br>
-        <%= f.text_field :addr2, class: "form-control", placeholder: "Enter Address", autofocus: true %>
+      <div class="forminfo inline hlf">
+        <%= f.label :street_address_2 %>:<br>
+        <%= f.text_field :addr2, class: "form-control", placeholder: "Suite 488", autofocus: true %>
       </div>
 
-      <div class="forminfo">
-        <%= f.label :city %><br>
-        <%= f.text_field :city, class: "form-control", placeholder: "Enter Address", autofocus: true %>
+      <div class="forminfo inline uno">
+        *<%= f.label :city %>:<br>
+        <%= f.text_field :city, class: "form-control", placeholder: "Gulf Shores", autofocus: true %>
       </div>
 
-      <div class="forminfo">
-        <%= f.label :state %><br>
-        <%= f.text_field :state, class: "form-control", placeholder: "Enter Address", autofocus: true %>
+      <div class="forminfo inline">
+        *<%= f.label :state %>:<br>
+        <%= f.text_field :state, class: "form-control", placeholder: "Al", autofocus: true %>
       </div>
 
-      <div class="forminfo">
-        <%= f.label :zip %><br>
-        <%= f.text_field :zip, class: "form-control", placeholder: "Zipcode", autofocus: true %>
+      <div class="forminfo inline">
+        *<%= f.label :zip %>:<br>
+        <%= f.text_field :zip, class: "form-control", placeholder: "36542", autofocus: true %>
       </div>
 
-      <div class="forminfo">
-        <%= f.label :phone %><br>
-        <%= f.text_field :phone, class: "form-control", placeholder: "Enter Address", autofocus: true %>
+      <div class="forminfo inline uno">
+        *<%= f.label :phone %>:<br>
+        <%= f.text_field :phone, class: "form-control", placeholder: "1234567890", autofocus: true %>
       </div>
 
-      <div class="forminfo">
-        <%= f.label :ext %><br>
-        <%= f.text_field :ext, class: "form-control", placeholder: "Enter Address", autofocus: true %>
+      <div class="forminfo inline">
+        <%= f.label :ext %>:<br>
+        <%= f.text_field :ext, class: "form-control", placeholder: "1", autofocus: true %>
       </div>
 
-      <div class="forminfo">
-        <%= f.label :fax %><br>
-        <%= f.text_field :fax, class: "form-control", placeholder: "Enter Address", autofocus: true %>
+      <div class="forminfo inline">
+        <%= f.label :fax %>:<br>
+        <%= f.text_field :fax, class: "form-control", placeholder: "1234567890", autofocus: true %>
       </div>
 
-      <div class="forminfo">
-        <%= f.label :latitude %><br>
-        <%= f.text_field :latitude, class: "form-control", placeholder: "Enter Address", autofocus: true %>
+      <div class="forminfo inline uno">
+        <%= f.label :latitude %>:<br>
+        <%= f.text_field :latitude, class: "form-control", placeholder: "Latitude", autofocus: true %>
       </div>
 
-      <div class="forminfo">
-        <%= f.label :longitude %><br>
-        <%= f.text_field :longitude, class: "form-control", placeholder: "Enter Address", autofocus: true %>
+      <div class="forminfo inline">
+        <%= f.label :longitude %>:<br>
+        <%= f.text_field :longitude, class: "form-control", placeholder: "Longitude", autofocus: true %>
       </div>
     </div>
 
     <div class="form-group">
-      <div class="col-md-offset-2 col-md-10">
+      <div class="add-update">
         <%= f.submit(@location.new_record? ? "Add Location" : "Update Location", class: "btn btn-primary") %>
+        <%= link_to("[ Cancel ]", locations_path, :class => 'back-link inline') %>
+
+        <% unless @location.new_record? %>
+          <%= link_to "Delete This Location", location_path(@location), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-primary btn-danger" %>
+        <% end %>
       </div>
+      <p><small>*Required Fields</small></p>
     </div>
   <% end %>
 </div>

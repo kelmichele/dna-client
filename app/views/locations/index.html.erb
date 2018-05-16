@@ -1,25 +1,25 @@
 <% @page_title = "All Testing Locations" %>
 
 <!-- rake geocode:all CLASS=Location SLEEP=0.25 BATCH=50 -->
-<div class="full">
+<div class="full all-search">
 	<div class="wrap-lg">
-		<div class="col-md-6">
+		<div class="title-left">
 			<h1><%= @page_title %></h1>
 		</div>
 
-		<div class="col-md-3 col-md-offset-3">
-			<br><br>
+		<div class="btns-right">
 		  <% if current_user.admin? %>
 			<%= link_to "Add New Locations", new_location_path, class: "btn btn-default" %>
 			<% end %>
 		</div>
-		<div class="clearfix"></div><br>
-		<hr>
-			<%= form_with(url: locations_path, class: "form-inline", local: true, method: :get) do |f| %>
-			  <%= f.text_field :near, class: "form-control", placeholder: "Search" %>
-			  <%= f.submit "Search", class: "btn btn-default search" %>
-			<% end %>
-		<hr>
+		<div class="clearfix"></div>
+
+		<hr class="search-border top">
+		<%= form_with(url: locations_path, class: "form-inline", local: true, method: :get) do |f| %>
+		  <%= f.text_field :near, class: "form-control", placeholder: "Search" %>
+		  <%= f.submit "Search", class: "btn btn-default search" %>
+		<% end %>
+		<hr class="search-border btm">
 
 		<div class="map-box">
 			<%= tag.div nil, id: 'map', data: { locations: @locations.to_json(methods: [:address]), l: params[:l] } %>
@@ -33,9 +33,9 @@
 					<div class="clearfix"></div>
 
 					<tr class="toprow">
-						<td class="id">
+						<!-- <td class="id">
 							<p>ID</p>
-						</td>
+						</td> -->
 
 						<td class="st-addr">
 							<p>Address</p>
@@ -55,22 +55,23 @@
 					</tr>
 
 					<% @locations.each do |location| %>
-					<tr>
-						<td class="id">
+					<tr class="results">
+						<!-- <td class="id">
 							<p><%= location.id %>.</p>
-						</td>
+						</td> -->
 
 						<td class="st-addr">
-							<p><%= location.addr1.titleize %><br>
-							<% if location.addr2 %><%= location.addr2.titleize %><br><% end %>
-							<%= location.city.titleize %>, <%= location.state.upcase %> <%= location.zip %>
-						</p>
+							<p>
+								<%= location.addr1.titleize %><br>
+								<% if location.addr2 %><%= location.addr2.titleize %><br><% end %>
+								<%= location.city.titleize %>, <%= location.state.upcase %> <%= location.zip %>
+							</p>
 						</td>
 
 						<td class="number">
 							<p>
 								<%= number_to_phone(location.phone, delimiter: '.', area_code: true) %>
-							<% if location.ext %><br>Ext: <%= location.ext %> <% end %>
+							<% if location.ext %><br><span class="ext">Ext: <%= location.ext %></span> <% end %>
 							</p>
 						</td>
 
@@ -80,14 +81,17 @@
 						</td>
 
 						<td class="lab">
-							<p><%= location.lab %></p>
-							<% if location.detail %><p><%= location.detail %> </p><% end %>
+							<p><%= location.lab %>
+								<% if location.detail %><br><span class="dets"><%= location.detail %></span><% end %>
+							</p>
 						</td>
 
 						<td class="btns">
 							<div class="actions">
-								<%= link_to("View", location_path(location), class: 'action show') %>
-							  <% if current_user.admin? %><%= link_to("Edit", edit_location_path(location), class: 'action edit') %><% end %>
+								<% if current_user.admin? %>
+									<!-- <%= link_to("View", location_path(location), class: 'action show') %>  -->
+								  <%= link_to("Edit", edit_location_path(location), class: 'action edit') %>
+							  <% end %>
 							</div>
 						</td>
 					</tr>
