@@ -103,6 +103,29 @@ p.ttc {text-transform:lowercase;
 			.action.show, .action.edit{display: inline-block; margin: 0px 5px; width:auto;}
 		}
 	}
+
+	@include bp(tn) {
+		.all-search {
+			.form-inline{width: 100%;}
+			input.form-control {width: 40%; margin-bottom: 7px;}
+		}
+	}
+
+	@include bp(pl) {
+		.title-left, .btns-right {@include sec-default(); margin-top: 0; padding-left: 10px;
+			.btn-default{float: left;}
+		}
+		h1 {font-size: 22px}
+	}
+
+	// @media screen and (max-width:665px) {
+	// 	.locations-table {
+
+	// 		td {
+	// 			width: 40%; margin-left: 4%;
+	// 		}
+	// 	}
+	// }
 }
 
 .locations.new, .locations.edit, .locations.create {
