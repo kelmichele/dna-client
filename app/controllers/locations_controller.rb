@@ -13,7 +13,7 @@ class LocationsController < ApplicationController
 	  else
 	    Location.all
 		end
-		@locations = @locations.paginate(:page => params[:page], :per_page => 15)
+		@locations = @locations.paginate(:page => params[:page], :per_page => 10)
 
 		respond_to do |format|
 		  format.html

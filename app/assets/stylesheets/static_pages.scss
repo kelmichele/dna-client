@@ -32,7 +32,7 @@ p.ttc {text-transform:lowercase;
 	}
 }
 
-.clinics, .locations {
+.locations {
 	.title-left, .btns-right {display: inline-block; float: left; width: 60%; }
 	h1 {padding-left:15px;}
 	.btns-right {width: 25%; float: right; margin-top: 30px; padding-right: 15px;
@@ -50,13 +50,13 @@ p.ttc {text-transform:lowercase;
 		}
 	}
 
-	.map-box, .clinics-list, .locations-list {width: 90%; @include center-block();}
-	#map {margin-bottom:10px;}
+	.map-box, .locations-list {width: 90%; @include center-block();}
+	#map {margin-bottom:10px; height:400px;}
 
-	.clinics-list, .locations-list {margin-top:30px;}
+	.locations-list {margin-top:30px;}
 	.pag-box {@include sec-default(); text-align: center;}
 
-	.clinics-table, .locations-table {@include sec-default();
+	.locations-table {@include sec-default();
 		tbody{@include sec-default();}
 		tr.results{@include sec-default(); border-bottom: 1px solid #f2f2f2; padding:20px 0 15px;
 			&:hover {background-color: $f9}
@@ -73,11 +73,35 @@ p.ttc {text-transform:lowercase;
 			span.dets {font-size: 15px; color: red; font-weight: bold;}
 		}
 	}
+
+
+	@include bp(su) {
+		.map-box, .locations-list {width: 48%; display: inline-block; float: left; margin-top:25px;}
+		.map-box{width: 45%; }
+		#map {height: 500px;}
+		.locations-list {margin-left: 4%;}
+	}
+
+	@media screen and (max-width:1200px) {
+		.map-box, .clinics-list, .locations-list {@include sec-default();}
+		.locations-list {margin-top:0px;}
+	}
+
+	@include bp(tb) {
+		.locations-table {
+			td {display: inline-block; float: left;
+				width: 22%;
+				&.btns {width: 100%; float:left;}
+				&.st-addr {width: 34%}
+			}
+			p{font-size: 15px;}
+		}
+
+	}
 }
 
-.locations.new, .locations.edit {
+.locations.new, .locations.edit, .locations.create {
 	h1{font-size: 30px;}
-	// .form-pagetop{@include sec-default(); border-bottom: 1px solid #dfdfdf;}
 	.title-left { width: 60%; }
 	.btns-right {width: 35%; margin-top: 0px;}
 	.import-box {@include sec-default(); float: right; background-color: $f9; padding: 15px 20px; text-align: center;
@@ -89,20 +113,19 @@ p.ttc {text-transform:lowercase;
 		}
 	}
 
-	.form-sec {@include sec-default();font-family: $monte;
-		.form-group{width: 90%; @include center-block();}
+	.form-sec {@include sec-default();font-family: $monte;}
+	.form-group{width: 90%; @include center-block();}
 
-		.forminfo{margin-bottom: 20px;
-			&.inline {display: inline-block; float: left; width: 30%; margin-left: 2%; }
-			&.inline.hlf {width: 45%;}
-			&.inline.uno{margin-left: 0;}
-		}
-
-		.form-control{height:40px;}
-		.add-update{margin-bottom: 8px;}
-		.back-link {font-weight: bold; color: red; margin-left: 5%;}
-		.btn-danger {float: right;}
+	.forminfo{margin-bottom: 20px;
+		&.inline {display: inline-block; float: left; width: 30%; margin-left: 2%; }
+		&.inline.hlf {width: 45%;}
+		&.inline.uno{margin-left: 0;}
 	}
+
+	.form-control{height:40px;}
+	.add-update{margin-bottom: 8px;}
+	.back-link {font-weight: bold; color: red; margin-left: 5%;}
+	.btn-danger {float: right;}
 }
 
 

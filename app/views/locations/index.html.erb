@@ -24,19 +24,16 @@
 		<div class="map-box">
 			<%= tag.div nil, id: 'map', data: { locations: @locations.to_json(methods: [:address]), l: params[:l] } %>
 			<%= link_to "[ Redo search in this area ]", "#", id: "redo-search" %>
+			<div class="pag-box map-side"><%= will_paginate @locations, remote: true %></div>
 		</div>
 
 		<div class="locations-list">
 			<table class="locations-table">
 				<tbody>
-					<div class="pag-box"><%= will_paginate @locations, remote: true %></div>
+					<!-- <div class="pag-box top"><%= will_paginate @locations, remote: true %></div> -->
 					<div class="clearfix"></div>
 
 					<tr class="toprow">
-						<!-- <td class="id">
-							<p>ID</p>
-						</td> -->
-
 						<td class="st-addr">
 							<p>Address</p>
 						</td>
@@ -56,12 +53,10 @@
 
 					<% @locations.each do |location| %>
 					<tr class="results">
-						<!-- <td class="id">
-							<p><%= location.id %>.</p>
-						</td> -->
 
 						<td class="st-addr">
 							<p>
+
 								<%= location.addr1.titleize %><br>
 								<% if location.addr2 %><%= location.addr2.titleize %><br><% end %>
 								<%= location.city.titleize %>, <%= location.state.upcase %> <%= location.zip %>
@@ -98,7 +93,7 @@
 					<% end %>
 				</tbody>
 			</table>
-			<div class="pag-box"><%= will_paginate @locations, remote: true %></div>
+			<div class="pag-box btm"><%= will_paginate @locations, remote: true %></div>
 		</div>
 	</div>
 </div>
