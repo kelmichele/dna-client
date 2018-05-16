@@ -72,6 +72,11 @@ p.ttc {text-transform:lowercase;
 			span.ext {font-size: 15px; color: $dk-blue; font-weight: bold;}
 			span.dets {font-size: 15px; color: red; font-weight: bold;}
 		}
+
+		.action {background-color: transparent; text-shadow:none; width:auto;
+			&.view {color: $dk-blue;}
+			&.edit {color: red;}
+		}
 	}
 
 
@@ -95,8 +100,8 @@ p.ttc {text-transform:lowercase;
 				&.st-addr {width: 34%}
 			}
 			p{font-size: 15px;}
+			.action.show, .action.edit{display: inline-block; margin: 0px 5px; width:auto;}
 		}
-
 	}
 }
 
@@ -128,7 +133,18 @@ p.ttc {text-transform:lowercase;
 	.btn-danger {float: right;}
 }
 
+.locations.show{
+	.full-location-info, .location-actions {display: inline-block; float: left; }
+	.full-location-info { width: 60%; margin-left: 5%;}
+	.location-actions{width: 20%;}
+	.attr {display: inline-block;width: 45%; float: left; margin-bottom: 15px;}
+	p b{color: $dk-blue;}
 
+	.action{@include sec-default(); margin-bottom: 10px; color:white;}
+	.action.edit {background-color: $dk-blue; }
+	.action.back {background-color: $gray; }
+
+}
 
 
 

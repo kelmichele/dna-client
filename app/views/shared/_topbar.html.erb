@@ -1,6 +1,6 @@
 <div class="topbar">
   <div class="inside">
-    <div class="logo-block"><%= link_to(image_tag( 'dna-logo-long.png', alt: 'Get DNA Tested Today logo', class: 'img-responsive logo'), root_path ) %></div>
+    <div class="logo-block"><%= link_to(image_tag( 'dna-logo.png', alt: 'Get DNA Tested Today logo', class: 'img-responsive logo'), root_path ) %></div>
 
 		<% if user_signed_in? %>
 			<div class="user-access-block">
@@ -20,9 +20,22 @@
 				</div>
 			</div>
 		<% end %>
+
+		<div class="uk-inline mobile-menu">
+	    <a class="uk-button" type="button">
+				<h4>Menu</h4>
+	    </a>
+
+	    <div uk-drop="mode: click" class="cst">
+        <ul class="uk-card uk-card-body uk-card-default">
+					<li><%= link_to 'Home', root_path, class: 'sm-link' %></li>
+					<li><%= link_to 'Testing', testing_path, class: 'sm-link' %></li>
+					<li><%= link_to 'Locations', locations_path, class: 'sm-link' %></li>
+					<li><%= link_to "FAQ's", faq_path, class: 'sm-link' %></li>
+        	<li class="nav-li"><%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'nav-link' %></li>
+        </ul>
+      </div>
+    </div>
+
   </div>
 </div>
-
-<!--
-
- -->

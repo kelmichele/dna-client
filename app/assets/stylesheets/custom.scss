@@ -30,9 +30,10 @@ a:hover {text-decoration: none; opacity: .7;}
 	@include sec-default();margin-top:0;background-color: #e8f9fe;padding: 10px 50px 10px 20px;
 	position: relative;z-index: 4;
 
+
 	.logo-block{display: inline-block;float: left;width: 18%;}
 
-	.user-access-block {display: inline-block;float: right; width: 40%; text-align: right;}
+	.user-access-block, .mobile-menu {display: inline-block;float: right; width: 40%; text-align: right;}
 	.uk-button{padding:0;}
 	h4{margin-top: 20px; }
 	li{text-align: left; }
@@ -40,6 +41,7 @@ a:hover {text-decoration: none; opacity: .7;}
 	.uk-drop.cst{width: 195px; margin-top: 0px;
 		.uk-card-body{padding:15px;}
 	}
+	.mobile-menu{display: none;}
 }
 
 .side-bar{
@@ -60,7 +62,7 @@ a:hover {text-decoration: none; opacity: .7;}
 .actions {
 	.action {border-radius: 10px; padding: 5px 10px; width: auto; color: white; font-weight: bold; font-size: 14px; text-shadow: 0px 1px 1px rgba(black,.5);
 		&.edit {background-color: $dk-blue; }
-		&.show {background-color: $blue; margin-bottom: 10px; width:55px;}
+		&.view {background-color: $blue; margin-bottom: 10px; width:55px;}
 	}
 }
 
@@ -73,8 +75,10 @@ a:hover {text-decoration: none; opacity: .7;}
 	}
 }
 
-@include bp(tn) {
-	// this is where we go relative
-	.side-bar{position: relative; @include sec-default(); height:auto; padding: 15px;}
+@media screen and (max-width:1023px){
+	.side-bar, .topbar .user-access-block{display:none;}
 	.page-body{@include sec-default();}
+	.topbar .mobile-menu {display: inline-block;
+		li {margin-bottom: 7px;}
+	}
 }

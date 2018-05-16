@@ -84,8 +84,8 @@
 						<td class="btns">
 							<div class="actions">
 								<% if current_user.admin? %>
-									<!-- <%= link_to("View", location_path(location), class: 'action show') %>  -->
-								  <%= link_to("Edit", edit_location_path(location), class: 'action edit') %>
+									<%= link_to("[View]", location_path(location), class: 'action view') %>
+								  <%= link_to("[Edit]", edit_location_path(location), class: 'action edit') %>
 							  <% end %>
 							</div>
 						</td>
