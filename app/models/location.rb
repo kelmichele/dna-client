@@ -3,7 +3,7 @@ class Location < ApplicationRecord
   after_validation :geocode, if: :address_changed?
 
   validates :lab, presence: true
-  validates :addr1, presence: true, uniqueness: { scope: :city, case_sensitive: false }
+  validates :addr1, presence: true, uniqueness: { case_sensitive: false }
   validates :city, presence: true
   validates :state, presence: true
   validates :zip, presence: true
