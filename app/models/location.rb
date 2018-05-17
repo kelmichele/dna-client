@@ -31,6 +31,22 @@ class Location < ApplicationRecord
     addr1_changed? || addr2_changed? || city_changed? || state_changed? || zip_changed?
   end
 
+  def ad_zip
+    "#{addr1}, #{zip}"
+  end
+
+  def rmv_dups
+    grouped_by_zip = Location.all.group_by{|location| [location.zip] }
+    grouped_by_addr1 = Location.all.group_by{|location| [location.addr1] }
+    grouped_by_zip.merge(grouped_by_addr1).values.each do |duplicates|
+      # last_one = duplicates.pop
+      # first_one = duplicates.shift
+      # duplicates.each{  |double| double.destroy }
+    end
+
+
+  end
+
  	def self.import(file)
     spreadsheet = Roo::Spreadsheet.open(file.path)
     header = spreadsheet.row(1)
@@ -52,11 +68,6 @@ class Location < ApplicationRecord
     end
   end
 
-  private
-    def remove_duplicates(callback)
-      @callbacks = nil
-      @chain.delete_if { |c| callback.duplicates?(c) }
-    end
 end
 
 # rake geocode:all CLASS=Location SLEEP=0.25 BATCH=100
