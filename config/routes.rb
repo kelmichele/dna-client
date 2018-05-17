@@ -11,7 +11,8 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 	get 'testing', to: 'static_pages#testing'
-	get 'faq', to: 'static_pages#faq'
+  get 'faq', to: 'static_pages#faq'
+	get 'inlocation', to: 'locations#inlocation'
 
   resources :states
 

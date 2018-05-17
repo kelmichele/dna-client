@@ -1,0 +1,78 @@
+<% @page_title = "All Testing Locations" %>
+
+<!-- rake geocode:all CLASS=Location SLEEP=0.25 BATCH=50 -->
+<div class="full all-search">
+	<div class="wrap-lg">
+		<div class="locations-list">
+			<table class="locations-table">
+				<tbody>
+					<div class="clearfix"></div>
+
+					<tr class="toprow">
+						<th class="id"><p>ID</p></th>
+						<th class="st-addr">
+							<p>Address</p>
+						</th>
+
+						<th class="number">
+							<p>City</p>
+						</th>
+
+						<th class="fax">
+							<p>Zip</p>
+						</th>
+
+						<th class="lab">
+							<p>Phone</p>
+						</th>
+					</tr>
+
+
+          <% tag = 0 %>
+          <p>Locations: <%= @locations.count %></p>
+          <p>Locations: <%= @locations.uniq.count %></p>
+					<% @locations.each do |location| %>
+					<tr class="results">
+						<td class="btns">
+	            <%= tag +=1 %>
+									<%= link_to("[View]", location_path(location), class: 'action view') %>
+
+						</td>
+						<td class="st-addr">
+							<p>
+								<%= location.addr1.titleize %> &nbsp;<b><% if location.addr2 %><%= location.addr2.titleize %></b><% end %>
+							</p>
+						</td>
+
+						<td>
+							<p><%= location.city_state.titleize %></p>
+						</td>
+
+						<td>
+							<p> <%= location.zip %></p>
+						</td>
+
+						<td class="number">
+							<p>
+								<%= number_to_phone(location.phone, delimiter: '.', area_code: true) %>
+							<% if location.ext %><br><span class="ext">Ext: <%= location.ext %></span> <% end %>
+							</p>
+						</td>
+
+						<!-- <td class="fax">
+							<p>
+								<%= number_to_phone(location.fax, delimiter: '.', area_code: true) %></p>
+						</td>
+
+						<td class="lab">
+							<p><%= location.lab %>
+								<% if location.detail %><br><span class="dets"><%= location.detail %></span><% end %>
+							</p>
+						</td> -->
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

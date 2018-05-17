@@ -57,12 +57,12 @@ p.ttc {text-transform:lowercase;
 	.pag-box {@include sec-default(); text-align: center;}
 
 	.locations-table {@include sec-default();
-		tbody{@include sec-default();}
+		tbody,thead{@include sec-default();}
 		tr.results{@include sec-default(); border-bottom: 1px solid #f2f2f2; padding:20px 0 15px;
 			&:hover {background-color: $f9}
 		}
 		tr.toprow{@include sec-default();border-bottom: 1px solid #dfdfdf;}
-		td {display: inline-block; float: left;
+		td,th {display: inline-block; float: left;
 			width: 21%; padding-left:10px;
 			&.id {width: 5%;}
 			&.btns {width: 6%;}
@@ -168,9 +168,6 @@ p.ttc {text-transform:lowercase;
 	.action.back {background-color: $gray; }
 
 }
-
-
-
 
 
 

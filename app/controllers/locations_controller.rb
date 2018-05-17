@@ -25,6 +25,12 @@ class LocationsController < ApplicationController
 		# @all_states = Location.distinct.select(:state).map { |s| s.state }
 	end
 
+	def inlocation
+		@locations = Location.all
+		# @locations = @locations.paginate(:page => params[:page], :per_page => 20)
+
+	end
+
 	def import
 	  Location.import(params[:file])
 	  redirect_to locations_path, notice: 'Locations imported.'
@@ -53,7 +59,7 @@ class LocationsController < ApplicationController
 
 	def update
 		if @location.update(location_params)
-		  flash[:success] = "Location was updated successfully"
+		  flash[:success] = "Location was updated successfully. You may close this tab."
 	    redirect_to locations_path
 		else
 		  render 'edit'
