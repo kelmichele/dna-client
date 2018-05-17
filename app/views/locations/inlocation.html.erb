@@ -29,12 +29,27 @@
 
 
           <% tag = 0 %>
-          <p>Locations: <%= @locations.count %></p>
-          <p>Locations: <%= @locations.uniq.count %></p>
+          <p><b>All Zips:</b> <%= @locations.count %><br>
+          <b>Unique Zips:</b> <%= @all_zips.count %></p>
+
+          <p>
+          	<b>Addresses:</b> <%= @locations.count %><br>
+          	<b>Unique:</b> <%= @all_adds.count %>
+          </p>
+
+
+				<!-- 	<%= @all_zips.each do |all_zip| %>
+					<% end %> -->
+<!--
+					<% @locations.each do |location| %>
+	          <h4><b><%= tag +=1 %>.</b>&nbsp; &nbsp; <%= location.zip %><br></h4>
+					<% end %> -->
+
+					<br><br><br>
+
 					<% @locations.each do |location| %>
 					<tr class="results">
 						<td class="btns">
-	            <%= tag +=1 %>
 									<%= link_to("[View]", location_path(location), class: 'action view') %>
 
 						</td>

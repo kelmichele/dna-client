@@ -9,7 +9,7 @@ class Location < ApplicationRecord
   validates :zip, presence: true
   validates :phone, presence: true
 
-  default_scope -> { order(state: :asc)}
+  # default_scope -> { order(state: :asc)}
 
   def street_addr
     "#{addr1}" + "\n" + "#{addr2}"
@@ -51,6 +51,12 @@ class Location < ApplicationRecord
       end
     end
   end
+
+  private
+    def remove_duplicates(callback)
+      @callbacks = nil
+      @chain.delete_if { |c| callback.duplicates?(c) }
+    end
 end
 
 # rake geocode:all CLASS=Location SLEEP=0.25 BATCH=100

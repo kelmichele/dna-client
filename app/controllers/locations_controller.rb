@@ -27,7 +27,8 @@ class LocationsController < ApplicationController
 
 	def inlocation
 		@locations = Location.all
-		# @locations = @locations.paginate(:page => params[:page], :per_page => 20)
+		@all_zips = Location.distinct.select(:zip).map { |s| s.zip }
+		@all_adds = Location.distinct.select(:addr1).map { |a| a.addr1 }
 
 	end
 
