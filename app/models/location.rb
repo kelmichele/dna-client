@@ -48,10 +48,11 @@ class Location < ApplicationRecord
 
 
   def self.to_csv(options = {})
+    desired_columns = ["lab", "detail", "addr1", "addr2", "city", "state", "zip", "phone", "ext", "fax", "latitude", "longitude"]
     CSV.generate(options) do |csv|
-      csv << column_names
+      csv << desired_columns
       all.each do |location|
-        csv << location.attributes.values
+        csv << location.attributes.values_at(*desired_columns)
       end
     end
   end

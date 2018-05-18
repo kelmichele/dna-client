@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Lab</Data></Cell>
+        <Cell><Data ss:Type="String">Detail</Data></Cell>
+        <Cell><Data ss:Type="String">Address</Data></Cell>
+        <Cell><Data ss:Type="String">Address 2</Data></Cell>
+        <Cell><Data ss:Type="String">City</Data></Cell>
+        <Cell><Data ss:Type="String">State</Data></Cell>
+        <Cell><Data ss:Type="String">Zip</Data></Cell>
+        <Cell><Data ss:Type="String">Phone</Data></Cell>
+        <Cell><Data ss:Type="String">Fax</Data></Cell>
+        <Cell><Data ss:Type="String">Latitude</Data></Cell>
+        <Cell><Data ss:Type="String">Longitude</Data></Cell>
+      </Row>
+    <% @locations.each do |location| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= location.lab %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= location.detail %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= location.addr1 %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= location.addr2 %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= location.city %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= location.state %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= location.zip %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= location.phone %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= location.ext %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= location.fax %></Data></Cell>
+        <Cell><Data ss:Type="Float"><%= location.latitude %></Data></Cell>
+        <Cell><Data ss:Type="Float"><%= location.longitude %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>
