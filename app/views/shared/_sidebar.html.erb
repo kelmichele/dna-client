@@ -11,7 +11,7 @@
 			<br><br><hr><br>
 			<!-- <p><small><b>Download:</small></p> -->
 		  <% if current_user.try(:admin?) %>
-				<%= link_to "Download CSV", clinics_path(format: "csv"), class: 'btn btn-default dl' %>
+				<%= link_to "Download CSV", locations_path(format: "csv"), class: 'btn btn-default dl' %>
 			<% end %>
 		   <!-- <li><%= link_to "Excel", clinics_path(format: "xls") %></li> -->
 		</ul>
