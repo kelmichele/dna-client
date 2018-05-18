@@ -3,7 +3,7 @@ class Location < ApplicationRecord
   after_validation :geocode, if: :address_changed?
 
   validates :lab, presence: true
-  validates :addr1, presence: true, uniqueness: { case_sensitive: false }
+  validates :addr1, presence: true, uniqueness: { scope: :city, case_sensitive: false }
   validates :city, presence: true
   validates :state, presence: true
   validates :zip, presence: true
@@ -35,19 +35,7 @@ class Location < ApplicationRecord
     "#{addr1}, #{zip}"
   end
 
-  def rmv_dups
-    grouped_by_zip = Location.all.group_by{|location| [location.zip] }
-    grouped_by_addr1 = Location.all.group_by{|location| [location.addr1] }
-    grouped_by_zip.merge(grouped_by_addr1).values.each do |duplicates|
-      # last_one = duplicates.pop
-      # first_one = duplicates.shift
-      # duplicates.each{  |double| double.destroy }
-    end
-
-
-  end
-
- 	def self.import(file)
+  def self.import(file)
     spreadsheet = Roo::Spreadsheet.open(file.path)
     header = spreadsheet.row(1)
     (2..spreadsheet.last_row).each do |i|
