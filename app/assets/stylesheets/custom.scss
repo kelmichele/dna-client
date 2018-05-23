@@ -35,7 +35,7 @@ a:hover {text-decoration: none; opacity: .7;}
 	.user-access-block, .mobile-menu {display: inline-block;float: right; width: 40%; text-align: right;}
 	.uk-button{padding:0;}
 	h4{margin-top: 20px; }
-	li{text-align: left; }
+	li{text-align: left; margin-bottom:12px;}
 
 	.uk-drop.cst{width: 195px; margin-top: 0px;
 		.uk-card-body{padding:15px;}
@@ -90,7 +90,12 @@ a:hover {text-decoration: none; opacity: .7;}
 
 
 
-
+.registrations.edit {
+	h3 {display: none;}
+	p{display: none;}
+	.actions {margin-top: 15px;margin-bottom: 10px;}
+	form.button_to {display: none;}
+}
 
 
 
