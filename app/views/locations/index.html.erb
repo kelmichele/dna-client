@@ -24,7 +24,10 @@
 		<div class="map-box">
 			<%= tag.div nil, id: 'map', data: { locations: @locations.to_json(methods: [:address]), l: params[:l] } %>
 			<%= link_to "[ Redo search in this area ]", "#", id: "redo-search" %>
-			<div class="pag-box map-side"><%= will_paginate @locations, remote: true %></div>
+			<div class="pag-box map-side">
+				<%= will_paginate @locations, remote: true %>
+			</div>
+			<h4 class="loc-count"><%= @locations.count %> Locations</h4>
 		</div>
 
 		<div class="locations-list">
@@ -53,10 +56,8 @@
 
 					<% @locations.each do |location| %>
 					<tr class="results">
-
 						<td class="st-addr">
 							<p>
-
 								<%= location.addr1.titleize %><br>
 								<% if location.addr2 %><%= location.addr2.titleize %><br><% end %>
 								<%= location.city.titleize %>, <%= location.state.upcase %> <%= location.zip %>

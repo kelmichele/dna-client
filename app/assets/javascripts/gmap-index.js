@@ -16,7 +16,8 @@ document.addEventListener("turbolinks:load", function() {
         lng: location.longitude,
         title: location.address,
         infoWindow: {
-          content: '<p><a href="/locations/' + location.id + '" >' + location.address + '</a></p>'
+          content: '<p>' + location.address + '</p>'
+          // content: '<p><a href="/locations/' + location.id + '" >' + location.address + '</a></p>'
         }
       });
     }

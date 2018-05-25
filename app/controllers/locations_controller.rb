@@ -9,7 +9,7 @@ class LocationsController < ApplicationController
 	    box      = Geocoder::Calculations.bounding_box(center, distance)
 	    Location.within_bounding_box(box)
 	  elsif params[:near]
-	    Location.near(params[:near])
+	    Location.near(params[:near], 100)
 	  else
 	    Location.all
 		end
@@ -21,6 +21,8 @@ class LocationsController < ApplicationController
 		  format.xls
 		end
 
+
+
 		# @states = Location.distinct.pluck(:state)
 		# @states = Location.pluck(:state)
 		# @all_states = Location.distinct.select(:state).map { |s| s.state }
@@ -30,7 +32,6 @@ class LocationsController < ApplicationController
 		@locations = Location.all
 		@all_zips = Location.distinct.select(:zip).map { |s| s.zip }
 		@all_adds = Location.distinct.select(:addr1).map { |a| a.addr1 }
-
 	end
 
 	def import
