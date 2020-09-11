@@ -9,12 +9,12 @@
 			<li><%= link_to "FAQ's", faq_path, class: 'sm-link' %></li>
 			<div class="clearfix"></div>
 			<br><br><hr><br>
-		  <!-- <% if current_user.try(:admin?) %>  -->
+		  <% if current_user.try(:admin?) %> 
 				<!-- <p><small><b>Download:</small></p> -->
-				<!-- <%= link_to "Download CSV", locations_path(format: "csv"), class: 'btn btn-default dl' %>  -->
-				<!-- <div class="clearfix"></div><br>
-			  <%= link_to "Excel", locations_path(format: "xls"), class: 'btn btn-default dl' %> -->
-			<!-- <% end %>  -->
+				<%= link_to "Download CSV", locations_path(format: "csv"), class: 'btn btn-default dl' %> 
+				<div class="clearfix"></div><br>
+			  <%= link_to "Excel", locations_path(format: "xls"), class: 'btn btn-default dl' %>
+			<% end %> 
 		</ul>
   </nav>
 </div>
